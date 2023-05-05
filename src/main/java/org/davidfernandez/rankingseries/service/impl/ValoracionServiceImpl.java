@@ -3,6 +3,7 @@ package org.davidfernandez.rankingseries.service.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import org.davidfernandez.rankingseries.model.Serie;
@@ -54,6 +55,34 @@ public class ValoracionServiceImpl implements ValoracionService {
 		return usuarioSesion.getNombre();
 	}
 
+	@Override
+	public Valoracion obtenerSerieValoracion(Long idSerie) {
+		try {
+			String queryString = "SELECT v FROM Valoracion v WHERE v.serie.idSerie = :idSerie";
+			TypedQuery<Valoracion> query = entityManager.createQuery(queryString, Valoracion.class);
+			query.setParameter("idSerie", idSerie);
+
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+
+	}
+
+	@Override
+	public List<Valoracion> obtenerTodasValoraciones() {
+		return valoracionRepository.findAll();
+	}
+	
+	public boolean usuarioHaValoradoSerie(Long idUsuario, Long idSerie) {
+	    TypedQuery<Long> query = entityManager.createQuery(
+	        "SELECT COUNT(v) FROM Valoracion v WHERE v.usuario.idUsuario = :idUsuario AND v.serie.idSerie = :idSerie", Long.class);
+	    query.setParameter("idUsuario", idUsuario);
+	    query.setParameter("idSerie", idSerie);
+	    Long count = query.getSingleResult();
+	    return count > 0;
+	}
+
 //	@Override
 //	public Long obtenerIdSeriePorNombre(String nombreSerie) {
 //		String queryString = "select s.idSerie from Serie s where s.nombre = :nombreSerie";
@@ -75,6 +104,4 @@ public class ValoracionServiceImpl implements ValoracionService {
 //		return valoraciones;
 //	}
 
-	
-	
 }

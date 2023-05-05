@@ -16,8 +16,10 @@ public interface ValoracionService {
 	
 	public String obtenerNombreUsuario(Authentication authentication);
 	
-	//public List<Long> obtenerIdSeriePorNombre(String nombreSerie);
+	public Valoracion obtenerSerieValoracion(Long idSerie);
 	
-	//public List<Valoracion> obtenerListaValoracionesPorIdSerieYIdUsuario(Long idSerie, Long idUsuario);
+	public List<Valoracion> obtenerTodasValoraciones();
+	
+	public boolean usuarioHaValoradoSerie(Long idUsuario, Long idSerie);
 	
 }

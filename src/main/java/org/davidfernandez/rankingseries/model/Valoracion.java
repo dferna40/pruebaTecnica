@@ -1,5 +1,6 @@
 package org.davidfernandez.rankingseries.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -15,7 +16,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "valoraciones")
-public class Valoracion {
+public class Valoracion implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

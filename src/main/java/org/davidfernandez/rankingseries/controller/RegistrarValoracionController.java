@@ -23,50 +23,47 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrarValoracionController {
 
 	@Autowired
-	private ValoracionService valoracionService; 
-	
+	private ValoracionService valoracionService;
+
 	@PostMapping("/registrarValoracion")
-	public ModelAndView guardarValoracion(@ModelAttribute("valoracion") Valoracion valoracion, Authentication authentication) {
+	public ModelAndView guardarValoracion(@ModelAttribute("valoracion") Valoracion valoracion,
+			Authentication authentication) {
 		ModelAndView modelAndView = new ModelAndView();
+
 		Long idUsuario = valoracionService.obtenerIdUsuario(authentication);
-		if(valoracion.getUsuario() == null) {
+		if (valoracion.getUsuario() == null) {
 			Usuario usuario = new Usuario();
 			valoracion.setUsuario(usuario);
 		}
 		valoracion.getUsuario().setIdUsuario(idUsuario);
-		valoracionService.guardarValoracion(valoracion);
-		modelAndView.setViewName("redirect:/valoracion/cargarFormulario?exito");
-		
+		Boolean serieValoradaPorUsuario = valoracionService
+				.usuarioHaValoradoSerie(valoracion.getUsuario().getIdUsuario(), valoracion.getSerie().getIdSerie());
+		if (!serieValoradaPorUsuario) {
+			valoracionService.guardarValoracion(valoracion);
+			modelAndView.setViewName("redirect:/valoracion/cargarFormulario?exito");
+		} else {
+			modelAndView.setViewName("redirect:/valoracion/cargarFormulario?NoExito");
+		}
 		return modelAndView;
-		
+
 	}
-	
+
 	@GetMapping("/volverInicio")
 	public ModelAndView volverInicio() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index");
-        return modelAndView;
+		return modelAndView;
 	}
-	
-	
-	
+
 	@GetMapping("/cargarFormulario")
-    public ModelAndView formularioSerie(@ModelAttribute("valoracion") ValoracionDTO valoracionDTO , Authentication authentication) {
-        ModelAndView modelAndView = new ModelAndView();
-        List<Serie> series = valoracionService.obtenerTodasSeries();
-        List<SerieDTO> seriesDTO = SerieMapper.listSerieModelASerieDTO(series);
-        modelAndView.addObject("series", seriesDTO);
-        modelAndView.addObject("usuario",valoracionService.obtenerNombreUsuario(authentication));
-        modelAndView.setViewName("valoracion");
-        return modelAndView;
-    }
-	
-//	@GetMapping("/nuevaValoracion")
-//	public ModelAndView nuevaValoracion() {
-//		 ModelAndView modelAndView = new ModelAndView();
-//		 ValoracionDTO valoracionDTO = new ValoracionDTO();
-//		 modelAndView.addObject("valoracion", valoracionDTO);
-//		 modelAndView.setViewName("redirect:/valoracion/cargarFormulario");
-//		 return modelAndView;
-//	}
+	public ModelAndView formularioSerie(@ModelAttribute("valoracion") ValoracionDTO valoracionDTO,
+			Authentication authentication) {
+		ModelAndView modelAndView = new ModelAndView();
+		List<Serie> series = valoracionService.obtenerTodasSeries();
+		List<SerieDTO> seriesDTO = SerieMapper.listSerieModelASerieDTO(series);
+		modelAndView.addObject("series", seriesDTO);
+		modelAndView.addObject("usuario", valoracionService.obtenerNombreUsuario(authentication));
+		modelAndView.setViewName("valoracion");
+		return modelAndView;
+	}
 }

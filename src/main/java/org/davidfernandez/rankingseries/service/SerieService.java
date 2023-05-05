@@ -11,7 +11,6 @@ public interface SerieService {
 	
 	public List<Serie> obtenerTodasSeries();
 	
-	//public Serie guardarSerie(SerieDTO serieDTO);
 	
 
 }
