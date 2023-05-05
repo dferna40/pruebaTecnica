@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<title>Ranking Series</title>
+</head>
+<body>
+	<nav th:replace="navbar_fragment :: nav_bar"></nav>
+	<h1 style="text-align: center">Elija una opción:</h1>
+	<div style="text-align: center; margin-top: 100px">
+		<a th:href="@{/serie/cargarFormulario}" class="btn btn-primary"
+			style="margin-right: 10px">Nueva serie</a> <a
+			th:href="@{/valoracion/cargarFormulario}" class="btn btn-primary"
+			style="margin-right: 10px">Nueva valoración</a> <a href="#"
+			class="btn btn-primary">Top Series</a>
+	</div>
+	<br>
+	<br>
+	<h2 style="text-align: center">Información de las series puntuadas</h2>
+	<br>
+	<div style="text-align: center;">
+		<div style="display: inline-block;">
+			<!-- <table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Serie</th>
+						<th>Plataforma Streaming</th>
+						<th>Usuarios</th>
+						<th>Valoración</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr  th:each="serie : ${series}">
+						<td th:text="${serie.nombre}"></td>
+						<td th:text="${serie.plataforma}"></td>
+						<td>
+							 aquí irán los usuarios que han valorado la serie 
+			
+			</td>
+			<td>
+				 aquí irá el campo numérico con la valoración 
+			</td>
+			</tr>
+			</tbody>
+			</table>
+			-->
+			<!--
+			
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Serie</th>
+						<th>Plataforma Streaming</th>
+						<th>Usuario</th>
+						<th>Valoración</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="serie : ${series}">
+						<td th:text="${serie.nombre}"></td>
+						<td th:text="${serie.plataforma}"></td>
+						<td>
+							<ul>
+								<li th:each="valoracion : ${serie.valoraciones}"><span
+									th:text="${valoracion.usuario.nombre}"></span></li>
+							</ul>
+						</td>
+						<td>
+							<ul>
+								<li th:each="valoracion : ${serie.valoraciones}"><span
+									th:text="${valoracion.valor}"></span></li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+-->
+
+
+		</div>
+
+
+
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<title>Registrar Serie</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav th:replace="navbar_fragment :: nav_bar"></nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div th:if=${param.exito}>
+					<div class="alert alert-info">Valoración guardada correctamente</div>
+				</div>
+
+				<form th:action="@{/valoracion/registrarValoracion}" th:object="${valoracion}" method="post">
+					<div class="form-group">
+						<label class="control-label" for="nombre">Nombre de
+							usuario : </label> <input id="usuario" type="text" class="form-control"
+							th:value="${usuario}" readonly>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="serie">Serie : </label> <select
+							class="form-control" required="required" th:value="${series}"
+							name="serie" id="serie">
+							<option disabled="disabled" selected="selected">Seleccione
+								una serie</option>
+							<option th:each="serie : ${series}" th:value="${serie.idSerie}"
+								th:text="${serie.nombre}"></option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="valoracion">Valoracion :
+						</label> <input id="valoracion" type="number" class="form-control"
+							th:field="*{valoracion}" required autofocus="autofocus">
+					</div>
+					<button class="btn btn-success" type="submit">Guardar
+						valoración</button>
+					<a href="/" class="btn btn-secondary">Volver a la página de
+						inicio</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+

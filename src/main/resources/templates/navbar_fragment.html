@@ -1,0 +1,16 @@
+<nav th:fragment="nav_bar"
+	class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<div class="container">
+		<a class="navbar-brand" href="#!">Ranking de Series</a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mt-2 mt-lg-0">	
+				</ul>
+			</div>
+			<a style="color: white;" href="#!">Bienvenido <span
+				sec:authentication="principal.username"></span></a> 
+				<a class="nav-link"
+				th:href="@{/logout}">Cerrar sesión</a>
+		</div>
+	</div>
+</nav>
