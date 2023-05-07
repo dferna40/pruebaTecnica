@@ -37,13 +37,13 @@ public class RegistroUsuarioController {
 			BindingResult result) {
 
 		ModelAndView modelAndView = new ModelAndView();
-		//if (result.hasErrors()) {
+		if (usuarioService.usuarioNoExiste(usuarioRegistroDTO)) {
 			usuarioService.guardarUsuario(usuarioRegistroDTO);
 			modelAndView.setViewName("redirect:/registro?exito");
-			
-//		} else {
-//			modelAndView.setViewName("redirect:/registro?noexito");
-//		}
+		} else {
+			modelAndView.setViewName("redirect:/registro?NoExito");
+		}
+
 		return modelAndView;
 
 	}

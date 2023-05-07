@@ -46,5 +46,10 @@ public class UsuarioServiceImpl implements UsuarioService{
 		
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
 	}
+	
+	public boolean usuarioNoExiste(UsuarioRegistroDTO registroDTO) {
+        Usuario usuario = usuarioRepository.findByEmail(registroDTO.getEmail());
+        return usuario == null;
+    }
 
 }
