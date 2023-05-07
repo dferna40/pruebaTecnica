@@ -6,7 +6,7 @@ public class ValoracionDTO {
 
 	private Long id;
 	
-	private float valoracion;
+	private Double valoracion;
 	
 	private Long usuarioValoracion;
 	
@@ -16,7 +16,7 @@ public class ValoracionDTO {
 	
 	private Date fechaActualizacion;
 
-	public ValoracionDTO(Long id, float valoracion, Long usuarioValoracion, Long serieValoracion,
+	public ValoracionDTO(Long id, Double valoracion, Long usuarioValoracion, Long serieValoracion,
 			Date fechaCreacion, Date fechaActualizacion) {
 		super();
 		this.id = id;
@@ -29,7 +29,7 @@ public class ValoracionDTO {
 	
 	
 
-	public ValoracionDTO(float valoracion, Long usuarioValoracion, Long serieValoracion, Date fechaCreacion,
+	public ValoracionDTO(Double valoracion, Long usuarioValoracion, Long serieValoracion, Date fechaCreacion,
 			Date fechaActualizacion) {
 		super();
 		this.valoracion = valoracion;
@@ -53,11 +53,11 @@ public class ValoracionDTO {
 		this.id = idValoracion;
 	}
 
-	public float getValoracion() {
+	public Double getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(float valoracion) {
+	public void setValoracion(Double valoracion) {
 		this.valoracion = valoracion;
 	}
 

@@ -1,17 +1,21 @@
 package org.davidfernandez.rankingseries.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+import org.davidfernandez.rankingseries.dto.SerieDTO;
+import org.davidfernandez.rankingseries.mapper.SerieMapper;
 import org.davidfernandez.rankingseries.model.Serie;
 import org.davidfernandez.rankingseries.model.Usuario;
 import org.davidfernandez.rankingseries.model.Valoracion;
 import org.davidfernandez.rankingseries.repository.SerieRepository;
 import org.davidfernandez.rankingseries.repository.UsuarioRepository;
 import org.davidfernandez.rankingseries.repository.ValoracionRepository;
+import org.davidfernandez.rankingseries.service.PrincipalService;
 import org.davidfernandez.rankingseries.service.ValoracionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -31,6 +35,9 @@ public class ValoracionServiceImpl implements ValoracionService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private PrincipalService principalService;
 
 	@Override
 	public Valoracion guardarValoracion(Valoracion valoracion) {
@@ -82,6 +89,28 @@ public class ValoracionServiceImpl implements ValoracionService {
 	    Long count = query.getSingleResult();
 	    return count > 0;
 	}
+	
+	public Double obtenerMediaValoraciones(Long idSerie) {
+	    TypedQuery<Double> query = entityManager.createQuery(
+	        "SELECT AVG(v.valoracion) FROM Valoracion v WHERE v.serie.idSerie = :idSerie",
+	        Double.class
+	    );
+	    query.setParameter("idSerie", idSerie);
+	    return query.getSingleResult();
+	}
+
+	@Override
+	public List<SerieDTO> obtenerSeriesConValoracionAVG() {
+		List<Serie> series = obtenerTodasSeries();
+		List<SerieDTO> seriesDTO = SerieMapper.listSerieModelASerieDTO(series);
+
+		for (SerieDTO serie : seriesDTO) {
+			serie.setValoracionMedia(obtenerMediaValoraciones(serie.getIdSerie()));
+		}
+		return seriesDTO;
+	}
+	
+	
 
 //	@Override
 //	public Long obtenerIdSeriePorNombre(String nombreSerie) {

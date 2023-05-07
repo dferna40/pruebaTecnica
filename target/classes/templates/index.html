@@ -10,12 +10,11 @@
 </head>
 <body>
 	<nav th:replace="navbar_fragment :: nav_bar"></nav>
-	<h1 style="text-align: center">Elija una opción:</h1>
 	<div style="text-align: center; margin-top: 100px">
 		<a th:href="@{/serie/cargarFormulario}" class="btn btn-primary"
 			style="margin-right: 10px">Nueva serie</a> <a
 			th:href="@{/valoracion/cargarFormulario}" class="btn btn-primary"
-			style="margin-right: 10px">Nueva valoración</a> <a href="#"
+			style="margin-right: 10px">Nueva valoración</a> <a th:href="@{/topSeries/cargarTopSeries}"
 			class="btn btn-primary">Top Series</a>
 	</div>
 	<br>

@@ -29,7 +29,7 @@ public class Valoracion implements Serializable{
 	private Long id;
 	
 	@Column(name = "valoracion")
-	private float valoracion;
+	private Double valoracion;
 	
 	@Column(name = "fecha_creacion")
 	private Date fechaCreacion;
@@ -48,7 +48,7 @@ public class Valoracion implements Serializable{
     
     
 
-	public Valoracion(Long id, float valoracion, Date fechaCreacion, Date fechaActualizacion) {
+	public Valoracion(Long id, Double valoracion, Date fechaCreacion, Date fechaActualizacion) {
 		super();
 		this.id = id;
 		this.valoracion = valoracion;
@@ -58,7 +58,7 @@ public class Valoracion implements Serializable{
 	
 	
 
-	public Valoracion(float valoracion, Date fechaCreacion, Date fechaActualizacion) {
+	public Valoracion(Double valoracion, Date fechaCreacion, Date fechaActualizacion) {
 		super();
 		this.valoracion = valoracion;
 		this.fechaCreacion = fechaCreacion;
@@ -67,7 +67,7 @@ public class Valoracion implements Serializable{
 
 
 
-	public Valoracion(Long id, float valoracion, Date fechaCreacion, Date fechaActualizacion, Usuario usuario,
+	public Valoracion(Long id, Double valoracion, Date fechaCreacion, Date fechaActualizacion, Usuario usuario,
 			Serie serie) {
 		super();
 		this.id = id;
@@ -80,7 +80,7 @@ public class Valoracion implements Serializable{
 
 
 
-	public Valoracion(float valoracion, Date fechaCreacion, Date fechaActualizacion, Usuario usuario, Serie serie) {
+	public Valoracion(Double valoracion, Date fechaCreacion, Date fechaActualizacion, Usuario usuario, Serie serie) {
 		super();
 		this.valoracion = valoracion;
 		this.fechaCreacion = fechaCreacion;
@@ -91,7 +91,7 @@ public class Valoracion implements Serializable{
 
 
 
-	public Valoracion(float valoracion) {
+	public Valoracion(Double valoracion) {
 		super();
 		this.valoracion = valoracion;
 	}
@@ -112,11 +112,11 @@ public class Valoracion implements Serializable{
 		this.id = id;
 	}
 
-	public float getValoracion() {
+	public Double getValoracion() {
 		return valoracion;
 	}
 
-	public void setValoracion(float valoracion) {
+	public void setValoracion(Double valoracion) {
 		this.valoracion = valoracion;
 	}
 

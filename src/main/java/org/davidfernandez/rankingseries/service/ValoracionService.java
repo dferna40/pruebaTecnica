@@ -2,6 +2,7 @@ package org.davidfernandez.rankingseries.service;
 
 import java.util.List;
 
+import org.davidfernandez.rankingseries.dto.SerieDTO;
 import org.davidfernandez.rankingseries.model.Serie;
 import org.davidfernandez.rankingseries.model.Valoracion;
 import org.springframework.security.core.Authentication;
@@ -21,5 +22,9 @@ public interface ValoracionService {
 	public List<Valoracion> obtenerTodasValoraciones();
 	
 	public boolean usuarioHaValoradoSerie(Long idUsuario, Long idSerie);
+	
+	public Double obtenerMediaValoraciones(Long idSerie);
+	
+	public List<SerieDTO> obtenerSeriesConValoracionAVG();
 	
 }

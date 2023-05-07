@@ -17,6 +17,8 @@ private Long idSerie;
 	private Date fechaCreacion;
 	
 	private Date fechaActualizacion;
+	
+	private Double valoracionMedia;
 
 	public SerieDTO(Long idSerie, String nombre, String caratula, String plataforma, String sinopsis,
 			Date fechaCreacion, Date fechaActualizacion) {
@@ -99,6 +101,14 @@ private Long idSerie;
 
 	public void setFechaActualizacion(Date fechaActualizacion) {
 		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public Double getValoracionMedia() {
+		return valoracionMedia;
+	}
+
+	public void setValoracionMedia(Double valoracionMedia) {
+		this.valoracionMedia = valoracionMedia;
 	}
 	
 	
