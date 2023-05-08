@@ -14,6 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Clase que mapea la entidad valoraciones
+ * @author David
+ *
+ */
 @Entity
 @Table(name = "valoraciones")
 public class Valoracion implements Serializable{

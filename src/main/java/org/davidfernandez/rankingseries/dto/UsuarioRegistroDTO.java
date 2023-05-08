@@ -2,6 +2,11 @@ package org.davidfernandez.rankingseries.dto;
 
 import java.util.Date;
 
+/**
+ * Clase que representa el acceso a datos para la entidad Usuario.
+ * @author David
+ *
+ */
 public class UsuarioRegistroDTO {
 
 	private Long idUsuario;

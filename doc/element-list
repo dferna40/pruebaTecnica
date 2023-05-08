@@ -1,0 +1,11 @@
+org.davidfernandez.rankingseries
+org.davidfernandez.rankingseries.configuration
+org.davidfernandez.rankingseries.controller
+org.davidfernandez.rankingseries.dto
+org.davidfernandez.rankingseries.error
+org.davidfernandez.rankingseries.mapper
+org.davidfernandez.rankingseries.model
+org.davidfernandez.rankingseries.repository
+org.davidfernandez.rankingseries.security
+org.davidfernandez.rankingseries.service
+org.davidfernandez.rankingseries.service.impl

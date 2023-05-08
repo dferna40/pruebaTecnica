@@ -9,12 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controlador REST que maneja las operaciones relacionadas con el registro del usuario.
+ */
 @RestController
 public class RegistroController {
 	
 	@Autowired
 	private PrincipalService principalService;
 
+	/**
+     * Retorna un objeto ModelAndView que carga la pagina de inicio de sesion.
+     *
+     * @return un objeto ModelAndView que carga la pagina de inicio de sesion
+     */
 	@GetMapping("/login")
     public ModelAndView iniciarSesion() {
         ModelAndView modelAndView = new ModelAndView();
@@ -22,6 +30,11 @@ public class RegistroController {
         return modelAndView;
     }
 	
+	/**
+     * Retorna un objeto ModelAndView que carga la pagina de inicio.
+     *
+     * @return un objeto ModelAndView que carga la pagina de inicio
+     */
 	@GetMapping("/")
 	public ModelAndView verPaginaDeInicio() {
 		ModelAndView modelAndView = new ModelAndView();

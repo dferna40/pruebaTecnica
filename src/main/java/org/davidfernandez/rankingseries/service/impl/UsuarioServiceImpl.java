@@ -18,6 +18,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+/**
+ * Clase de servicio que implementa la interfaz UsuarioService con la logica de negocio
+ * @author David
+ */
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 	

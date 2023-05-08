@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controlador REST que maneja las operaciones relacionadas con el top de series.
+ */
 @RestController
 @RequestMapping("/topSeries")
 public class TopSeriesController {
@@ -17,7 +20,11 @@ public class TopSeriesController {
 	@Autowired
 	private ValoracionService valoracionService;
 	
-	
+	/**
+     * Retorna un objeto ModelAndView que carga el formulario de serie.
+     *
+     * @return un objeto ModelAndView que carga el formulario de serie
+     */
 	@GetMapping("/cargarTopSeries")
 	public ModelAndView formularioSerie() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -28,6 +35,11 @@ public class TopSeriesController {
 		return modelAndView;
 	}
 	
+	/**
+     * Retorna un objeto ModelAndView que redirige a la pagina de inicio.
+     *
+     * @return un objeto ModelAndView que redirige a la pagina de inicio
+     */
 	@GetMapping("/volverInicio")
 	public ModelAndView volverInicio() {
 		ModelAndView modelAndView = new ModelAndView();

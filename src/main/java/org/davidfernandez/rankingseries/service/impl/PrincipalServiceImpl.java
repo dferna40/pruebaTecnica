@@ -12,6 +12,11 @@ import org.davidfernandez.rankingseries.service.PrincipalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Clase de servicio que implementa la interfaz PrincipalService con la logica de negocio
+ * @author David
+ *
+ */
 @Service
 public class PrincipalServiceImpl implements PrincipalService {
 

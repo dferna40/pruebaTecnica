@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controlador REST que maneja las operaciones relacionadas con el registro de series.
+ */
 @RestController
 @RequestMapping("/serie")
 public class RegistroSerieController {
@@ -18,7 +21,11 @@ public class RegistroSerieController {
 	@Autowired
 	private SerieService serieService; 
 	
-	
+	 /**
+     * Retorna un objeto ModelAndView que redirige a la pagina de inicio.
+     *
+     * @return un objeto ModelAndView que redirige a la pagina de inicio
+     */
 	@GetMapping("/volverInicio")
 	public ModelAndView volverInicio() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -26,7 +33,11 @@ public class RegistroSerieController {
         return modelAndView;
 	}
 
-	
+	/**
+     * Retorna un objeto ModelAndView que carga el formulario de serie.
+     *
+     * @return un objeto ModelAndView que carga el formulario de serie
+     */
 	@GetMapping("/cargarFormulario")
     public ModelAndView formularioSerie() {
         ModelAndView modelAndView = new ModelAndView();
@@ -36,6 +47,12 @@ public class RegistroSerieController {
         return modelAndView;
     }
 	
+	/**
+     * Guarda una serie en la base de datos.
+     *
+     * @param serieDTO el DTO de la serie a guardar
+     * @return un objeto ModelAndView que redirige a la pagina correspondiente
+     */
 	@PostMapping("/registrarSerie")
     public ModelAndView guardarSerie(@ModelAttribute("serie") SerieDTO serieDTO) {
         ModelAndView modelAndView = new ModelAndView();

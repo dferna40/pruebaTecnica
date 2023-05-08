@@ -9,17 +9,17 @@ import org.davidfernandez.rankingseries.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Clase de servicio que implementa la interfaz SerieService con la logica de negocio
+ * @author David
+ *
+ */
 @Service
 public class SerieServiceImpl implements SerieService{
 
 	@Autowired
 	private SerieRepository serieRepository;
 	
-//	public SerieServiceImpl(SerieRepository serieRepositorio) {
-//		super();
-//		this.serieRepository = serieRepositorio;
-//	}
-//	
 	@Override
 	public List<Serie> obtenerTodasSeries() {
 		return serieRepository.findAll();
@@ -33,10 +33,5 @@ public class SerieServiceImpl implements SerieService{
 	
 	public List<Serie> mostrarTodasLasSerie(){
 		return serieRepository.findAll();
-	}
-
-	public void borrarSeriePorNombre(SerieDTO serieDTO) {
-		Serie serie = serieRepository.findByNombre(serieDTO.getNombre());
-		serieRepository.deleteByNombre(serie.getNombre());
 	}
 }

@@ -21,6 +21,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+/**
+ * /**
+ * Clase de servicio que implementa la interfaz ValoracionService con la logica de negocio
+ * @author David
+ */
+ 
 @Service
 public class ValoracionServiceImpl implements ValoracionService {
 
@@ -109,28 +115,4 @@ public class ValoracionServiceImpl implements ValoracionService {
 		}
 		return seriesDTO;
 	}
-	
-	
-
-//	@Override
-//	public Long obtenerIdSeriePorNombre(String nombreSerie) {
-//		String queryString = "select s.idSerie from Serie s where s.nombre = :nombreSerie";
-//
-//		TypedQuery<Long> query = entityManager.createQuery(queryString, Long.class);
-//		query.setParameter("nombreSerie", nombreSerie);
-//
-//		return query.getSingleResult();
-//	}
-//
-//	@Override
-//	public List<Valoracion> obtenerListaValoracionesPorIdSerieYIdUsuario(Long idSerie, Long idUsuario) {
-//		String queryString = "SELECT v FROM Valoracion v WHERE v.serie.idSerie = :idSerie AND v.usuario.idUsuario = :idUsuario";
-//		TypedQuery<Valoracion> query = entityManager.createQuery(queryString, Valoracion.class);
-//		query.setParameter("idSerie", idSerie);
-//		query.setParameter("idUsuario", idUsuario);
-//		List<Valoracion> valoraciones = query.getResultList();
-//		
-//		return valoraciones;
-//	}
-
 }

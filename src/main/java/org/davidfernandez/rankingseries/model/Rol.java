@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Clase que mapea la entidad rol
+ * @author David
+ *
+ */
 @Entity
 @Table(name = "rol")
 public class Rol {

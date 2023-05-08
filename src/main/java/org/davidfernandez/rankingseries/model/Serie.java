@@ -13,6 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * Clase que mapea la entidad series
+ * @author David
+ *
+ */
 @Entity
 @Table(name = "series",uniqueConstraints = @UniqueConstraint(columnNames = "nombre"))
 public class Serie {
@@ -39,6 +44,7 @@ public class Serie {
 	
 	@Column(name = "fecha_actualizacion")
 	private Date fechaActualizacion;
+	
 	
 	@OneToMany(mappedBy = "valoracion",cascade = CascadeType.ALL)
     private List<Valoracion> valoraciones;

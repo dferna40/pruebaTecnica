@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * Controlador REST que maneja las operaciones relacionadas con la valoracion de series.
+ */
 @RestController
 @RequestMapping("/valoracion")
 public class RegistrarValoracionController {
@@ -25,6 +28,13 @@ public class RegistrarValoracionController {
 	@Autowired
 	private ValoracionService valoracionService;
 
+	/**
+     * Guarda una valoracion en la base de datos.
+     *
+     * @param valoracion     la valoracion a guardar
+     * @param authentication la informacion de autenticacion del usuario
+     * @return un objeto ModelAndView que redirige a la pagina correspondiente
+     */
 	@PostMapping("/registrarValoracion")
 	public ModelAndView guardarValoracion(@ModelAttribute("valoracion") Valoracion valoracion,
 			Authentication authentication) {
@@ -48,6 +58,11 @@ public class RegistrarValoracionController {
 
 	}
 
+	/**
+     * Redirige al inicio.
+     *
+     * @return un objeto ModelAndView que redirige a la pagina de inicio
+     */
 	@GetMapping("/volverInicio")
 	public ModelAndView volverInicio() {
 		ModelAndView modelAndView = new ModelAndView();
@@ -55,6 +70,13 @@ public class RegistrarValoracionController {
 		return modelAndView;
 	}
 
+	/**
+     * Carga el formulario de valoracion de una serie.
+     *
+     * @param valoracionDTO   el DTO de valoracion
+     * @param authentication la informacion de autenticacion del usuario
+     * @return un objeto ModelAndView que carga el formulario de valoracion
+     */
 	@GetMapping("/cargarFormulario")
 	public ModelAndView formularioSerie(@ModelAttribute("valoracion") ValoracionDTO valoracionDTO,
 			Authentication authentication) {

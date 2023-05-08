@@ -17,8 +17,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-//import org.hibernate.annotations.ManyToAny;
-
+/**
+ * Clase que mapea la entidad usuarios
+ * @author David
+ *
+ */
 @Entity
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Usuario {
