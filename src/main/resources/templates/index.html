@@ -14,8 +14,9 @@
 		<a th:href="@{/serie/cargarFormulario}" class="btn btn-primary"
 			style="margin-right: 10px">Nueva serie</a> <a
 			th:href="@{/valoracion/cargarFormulario}" class="btn btn-primary"
-			style="margin-right: 10px">Nueva valoración</a> <a th:href="@{/topSeries/cargarTopSeries}"
-			class="btn btn-primary">Top Series</a>
+			style="margin-right: 10px">Nueva valoración</a> <a
+			th:href="@{/topSeries/cargarTopSeries}" class="btn btn-primary">Top
+			Series</a>
 	</div>
 	<br>
 	<br>
@@ -28,20 +29,26 @@
 					<tr>
 						<th>Serie</th>
 						<th>Plataforma</th>
-						<th>Usuario</th>
-						<th>Valoración</th>
+						<th>Valoraciones</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="valoracion : ${valoraciones}">
-						<td th:text="${valoracion.serie.nombre}"></td>
-						<td th:text="${valoracion.serie.plataforma}"></td>
-						<td th:text="${valoracion.usuario.nombre}"></td>
-						<td th:text="${valoracion.valoracion}"></td>
+					<tr th:each="serie : ${series}">
+						<td th:text="${serie.nombre}"></td>
+						<td th:text="${serie.plataforma}"></td>
+						<td>
+							<table class="table">
+								<tbody>
+									<tr th:each="valoracion : ${serie.listadoValoraciones}">
+										<td th:text="${valoracion.usuario.nombre}"></td>
+										<td th:text="${valoracion.valoracion}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
 	</div>
 </body>

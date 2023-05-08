@@ -1,6 +1,5 @@
 package org.davidfernandez.rankingseries.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,7 +14,6 @@ import org.davidfernandez.rankingseries.model.Valoracion;
 import org.davidfernandez.rankingseries.repository.SerieRepository;
 import org.davidfernandez.rankingseries.repository.UsuarioRepository;
 import org.davidfernandez.rankingseries.repository.ValoracionRepository;
-import org.davidfernandez.rankingseries.service.PrincipalService;
 import org.davidfernandez.rankingseries.service.ValoracionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -41,9 +39,6 @@ public class ValoracionServiceImpl implements ValoracionService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
-	@Autowired
-	private PrincipalService principalService;
 
 	@Override
 	public Valoracion guardarValoracion(Valoracion valoracion) {
@@ -81,12 +76,27 @@ public class ValoracionServiceImpl implements ValoracionService {
 		}
 
 	}
+	
+	@Override
+	public List<Valoracion> obtenerSeriesValoracion(Long idSerie) {
+		try {
+			String queryString = "SELECT v FROM Valoracion v WHERE v.serie.idSerie = :idSerie ";
+			TypedQuery<Valoracion> query = entityManager.createQuery(queryString, Valoracion.class);
+			query.setParameter("idSerie", idSerie);
+
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+
+	}
 
 	@Override
 	public List<Valoracion> obtenerTodasValoraciones() {
 		return valoracionRepository.findAll();
 	}
 	
+	@Override
 	public boolean usuarioHaValoradoSerie(Long idUsuario, Long idSerie) {
 	    TypedQuery<Long> query = entityManager.createQuery(
 	        "SELECT COUNT(v) FROM Valoracion v WHERE v.usuario.idUsuario = :idUsuario AND v.serie.idSerie = :idSerie", Long.class);
@@ -96,6 +106,7 @@ public class ValoracionServiceImpl implements ValoracionService {
 	    return count > 0;
 	}
 	
+	@Override
 	public Double obtenerMediaValoraciones(Long idSerie) {
 	    TypedQuery<Double> query = entityManager.createQuery(
 	        "SELECT AVG(v.valoracion) FROM Valoracion v WHERE v.serie.idSerie = :idSerie",
@@ -115,4 +126,14 @@ public class ValoracionServiceImpl implements ValoracionService {
 		}
 		return seriesDTO;
 	}
+
+	public List<SerieDTO> obtenerSeriesConValoraciones(){
+		List<Serie> series = obtenerTodasSeries();
+		List<SerieDTO> seriesDTO = SerieMapper.listSerieModelASerieDTO(series);
+		for (SerieDTO serie : seriesDTO) {
+			serie.setListadoValoraciones(obtenerSeriesValoracion(serie.getIdSerie()));
+		}
+		return seriesDTO;
+	}
+	
 }

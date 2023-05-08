@@ -1,6 +1,9 @@
 package org.davidfernandez.rankingseries.dto;
 
 import java.util.Date;
+import java.util.List;
+
+import org.davidfernandez.rankingseries.model.Valoracion;
 
 /**
  * Clase que representa el acceso a datos para la entidad Serie.
@@ -9,7 +12,7 @@ import java.util.Date;
  */
 public class SerieDTO {
 
-private Long idSerie;
+	private Long idSerie;
 	
 	private String nombre;
 	
@@ -24,6 +27,8 @@ private Long idSerie;
 	private Date fechaActualizacion;
 	
 	private Double valoracionMedia;
+	
+	private List<Valoracion> listadoValoraciones;
 
 	public SerieDTO(Long idSerie, String nombre, String caratula, String plataforma, String sinopsis,
 			Date fechaCreacion, Date fechaActualizacion) {
@@ -114,6 +119,14 @@ private Long idSerie;
 
 	public void setValoracionMedia(Double valoracionMedia) {
 		this.valoracionMedia = valoracionMedia;
+	}
+
+	public List<Valoracion> getListadoValoraciones() {
+		return listadoValoraciones;
+	}
+
+	public void setListadoValoraciones(List<Valoracion> listadoValoraciones) {
+		this.listadoValoraciones = listadoValoraciones;
 	}
 	
 	

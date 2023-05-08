@@ -2,8 +2,8 @@ package org.davidfernandez.rankingseries.controller;
 
 import java.util.List;
 
-import org.davidfernandez.rankingseries.model.Valoracion;
-import org.davidfernandez.rankingseries.service.PrincipalService;
+import org.davidfernandez.rankingseries.dto.SerieDTO;
+import org.davidfernandez.rankingseries.service.ValoracionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistroController {
 	
 	@Autowired
-	private PrincipalService principalService;
+	private ValoracionService valoracionService;
 
 	/**
      * Retorna un objeto ModelAndView que carga la pagina de inicio de sesion.
@@ -38,9 +38,9 @@ public class RegistroController {
 	@GetMapping("/")
 	public ModelAndView verPaginaDeInicio() {
 		ModelAndView modelAndView = new ModelAndView();
-		List<Valoracion> valoraciones = principalService.obtenerValoracionesDeUsuarios();
+		List<SerieDTO> series = valoracionService.obtenerSeriesConValoraciones();
 		//Anadir los atributos necesarios para la vista
-		modelAndView.addObject("valoraciones",valoraciones);
+		modelAndView.addObject("series",series);
 		//Vista
 		modelAndView.setViewName("index");
 		return modelAndView;

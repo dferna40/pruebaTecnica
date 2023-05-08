@@ -27,5 +27,7 @@ public interface PrincipalService {
 	 * @return List<Usuario>
 	 */
 	public List<Usuario> obtenerTodosLosUsuarios();
+	
+	public List<Valoracion> obtenerValoracionesPorUsuarioYSerie();
 
 }

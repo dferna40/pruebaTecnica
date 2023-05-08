@@ -85,5 +85,9 @@ public interface ValoracionService {
 	 * @return SerieDTO con la propiedad valoracionMedia
 	 */
 	public List<SerieDTO> obtenerSeriesConValoracionAVG();
+	
+	public List<SerieDTO> obtenerSeriesConValoraciones();
+	
+	public List<Valoracion> obtenerSeriesValoracion(Long idSerie);
 
 }

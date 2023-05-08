@@ -33,6 +33,13 @@ public class PrincipalServiceImpl implements PrincipalService {
 		TypedQuery<Valoracion> query = entityManager.createQuery(queryString, Valoracion.class);
 		return query.getResultList();
 	}
+	
+	public List<Valoracion> obtenerValoracionesPorUsuarioYSerie(){
+		String queryString = "SELECT v FROM Valoracion v WHERE v.usuario.idUsuario IN "
+				+ "(SELECT DISTINCT v2.usuario.idUsuario FROM Valoracion v2 INNER JOIN v2.serie s WHERE s.idSerie = v.serie.idSerie)";
+		TypedQuery<Valoracion> query = entityManager.createQuery(queryString, Valoracion.class);
+		return query.getResultList();
+	}
 
 	@Override
 	public List<Usuario> obtenerTodosLosUsuarios() {

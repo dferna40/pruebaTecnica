@@ -30,7 +30,7 @@ public class Serie {
 	@Column(name = "nombre",unique = true)
 	private String nombre;
 	
-	@Column(name = "caratula")
+	@Column(name = "caratula", length = 500)
 	private String caratula;
 	
 	@Column(name = "plataforma_streaming")

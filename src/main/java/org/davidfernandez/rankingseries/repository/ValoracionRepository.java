@@ -1,5 +1,7 @@
 package org.davidfernandez.rankingseries.repository;
 
+import java.util.List;
+
 import org.davidfernandez.rankingseries.model.Valoracion;
 import org.springframework.data.jpa.repository.JpaRepository;
 
