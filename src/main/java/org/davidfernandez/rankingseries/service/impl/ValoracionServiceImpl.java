@@ -78,7 +78,7 @@ public class ValoracionServiceImpl implements ValoracionService {
 	}
 	
 	@Override
-	public List<Valoracion> obtenerSeriesValoracion(Long idSerie) {
+	public List<Valoracion> obtenerValoracionesDeSeries(Long idSerie) {
 		try {
 			String queryString = "SELECT v FROM Valoracion v WHERE v.serie.idSerie = :idSerie ";
 			TypedQuery<Valoracion> query = entityManager.createQuery(queryString, Valoracion.class);
@@ -131,7 +131,7 @@ public class ValoracionServiceImpl implements ValoracionService {
 		List<Serie> series = obtenerTodasSeries();
 		List<SerieDTO> seriesDTO = SerieMapper.listSerieModelASerieDTO(series);
 		for (SerieDTO serie : seriesDTO) {
-			serie.setListadoValoraciones(obtenerSeriesValoracion(serie.getIdSerie()));
+			serie.setListadoValoraciones(obtenerValoracionesDeSeries(serie.getIdSerie()));
 		}
 		return seriesDTO;
 	}

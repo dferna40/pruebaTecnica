@@ -88,6 +88,11 @@ public interface ValoracionService {
 	
 	public List<SerieDTO> obtenerSeriesConValoraciones();
 	
-	public List<Valoracion> obtenerSeriesValoracion(Long idSerie);
+	/**
+	 * Metodo encargado de obtener la lista de las valoraciones de las series
+	 * @param idSerie
+	 * @return List<Valoracion>
+	 */
+	public List<Valoracion> obtenerValoracionesDeSeries(Long idSerie);
 
 }
