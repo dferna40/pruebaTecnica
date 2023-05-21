@@ -87,6 +87,12 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.5.7.Final</version>
 		</dependency>
+		
+		<!-- Testing -->
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	    </dependency>
 	</dependencies>
 
 	<build>
